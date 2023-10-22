@@ -9,6 +9,8 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static org.openqa.selenium.By.xpath;
+
 public class LoginPage {
     WebDriver driver;
     Env env = new Env();
@@ -46,7 +48,7 @@ public class LoginPage {
     @Then("User will see error invalid username password message")
     public void userWillSeeErrorInvalidUsernamePasswordMessage() throws InterruptedException {
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//*[text()='Epic sad face: Username and password do not match any user in this service']")).isDisplayed();
+        driver.findElement(By.xpath("//*[text()='Username and password do not valid in this service']")).isDisplayed();
     }
     @After("@LoginPage")
     public void closeDriver() throws InterruptedException {
