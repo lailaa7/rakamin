@@ -48,7 +48,7 @@ public class LoginPage {
     @Then("User will see error invalid username password message")
     public void userWillSeeErrorInvalidUsernamePasswordMessage() throws InterruptedException {
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//*[text()='Username and password do not valid in this service']")).isDisplayed();
+        driver.findElement(By.xpath("//*[@id=\"login_button_container\"]/div/form/div[3]")).isDisplayed();
     }
     @After("@LoginPage")
     public void closeDriver() throws InterruptedException {

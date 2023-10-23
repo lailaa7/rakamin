@@ -20,23 +20,23 @@ public class InventoryPage {
 
     @Given("User on inventory page")
     public void userOnInventoryPage() throws InterruptedException {
-        driver.findElement(By.id("user-name")).sendKeys(env.getValidUsername());
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//*[@id=\"user-name\"]")).sendKeys(env.getValidUsername());
         driver.findElement(By.id("password")).sendKeys(env.getValidPassword());
         driver.findElement(By.id("login-button")).click();
         driver.findElement(By.xpath("//*[starts-with(@id,\"add-to-cart\")]")).isDisplayed();
-        Thread.sleep(1000);
+
     }
 
     @When("User click add to cart button")
     public void userClickAddToCartButton() throws InterruptedException {
         Thread.sleep(1000);
         driver.findElement(By.name("add-to-cart-sauce-labs-backpack")).click();
-        driver.findElement(By.linkText("Add to cart")).click();
     }
 
     @Then("Item cart will increase")
     public void itemCartWillIncrease() {
-        String itemCart = driver.findElement(By.className("//*[@class='shopping_cart_badge']")).getText();
+        String itemCart = driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a/span")).getText();
         Assert.assertEquals("1", itemCart);
         WebDriverSetting.closeDriver();
     }
